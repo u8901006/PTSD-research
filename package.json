@@ -1,0 +1,11 @@
+{
+  "name": "ptsd-research-daily",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch-papers.mjs",
+    "report": "node scripts/generate-report.mjs",
+    "index": "node scripts/generate-index.mjs"
+  }
+}
