@@ -7,14 +7,19 @@
 <style>
   :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-  .container { text-align: center; padding: 40px; }
-  .logo { font-size: 64px; margin-bottom: 24px; }
-  h1 { font-size: 28px; margin-bottom: 12px; color: var(--text); }
-  .subtitle { color: var(--accent); font-size: 16px; margin-bottom: 32px; }
-  .info { color: var(--muted); font-size: 14px; line-height: 1.8; }
-  .info a { color: var(--accent); text-decoration: none; }
-  .info a:hover { text-decoration: underline; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; }
+  .container { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 80px 24px; }
+  .logo { font-size: 48px; text-align: center; margin-bottom: 16px; }
+  h1 { text-align: center; font-size: 24px; color: var(--text); margin-bottom: 8px; }
+  .subtitle { text-align: center; color: var(--accent); font-size: 14px; margin-bottom: 48px; }
+  .count { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 32px; }
+  ul { list-style: none; }
+  li { margin-bottom: 8px; }
+  a { color: var(--text); text-decoration: none; display: block; padding: 14px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; transition: all 0.2s; font-size: 15px; }
+  a:hover { background: var(--accent-soft); border-color: var(--accent); transform: translateX(4px); }
+  footer { margin-top: 56px; text-align: center; font-size: 12px; color: var(--muted); }
+  footer a { display: inline; padding: 0; background: none; border: none; color: var(--muted); }
+  footer a:hover { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -22,11 +27,11 @@
   <div class="logo">🧠</div>
   <h1>PTSD Research Daily</h1>
   <p class="subtitle">創傷後壓力研究日報 &middot; 每日自動更新</p>
-  <p class="info">
-    本站將在首次 GitHub Actions 執行後自動生成每日報告。<br/>
-    排程時間：每日 GMT+8 07:50<br/><br/>
-    <a href="https://github.com/u8901006/PTSD-research">GitHub 原始碼</a>
-  </p>
+  <p class="count">共 1 期報告</p>
+  <ul><li><a href="ptsd-2026-05-14.html">📅 2026年5月14日（週五）</a></li></ul>
+  <footer>
+    <p>Powered by PubMed + Zhipu AI &middot; <a href="https://github.com/u8901006/PTSD-research">GitHub</a></p>
+  </footer>
 </div>
 </body>
 </html>
