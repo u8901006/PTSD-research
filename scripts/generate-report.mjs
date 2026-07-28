@@ -3,9 +3,9 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-const API_BASE = process.env.ZHIPU_API_BASE || "https://open.bigmodel.cn/api/coding/paas/v4";
-const MODELS = ["glm-5-turbo", "glm-4.7", "glm-4.7-flash"];
-const MAX_TOKENS = 50000;
+const API_BASE = process.env.NVIDIA_API_BASE || "https://integrate.api.nvidia.com/v1";
+const MODELS = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"];
+const MAX_TOKENS = 16384;
 const TIMEOUT_MS = 480_000;
 
 const SYSTEM_PROMPT = `你是 PTSD（創傷後壓力症候群）研究領域的資深學術摘要與分析專家。你的任務是：
@@ -98,7 +98,7 @@ function sanitizeJson(text) {
   return cleaned;
 }
 
-async function callZhipu(apiKey, payload) {
+async function callNvidia(apiKey, payload) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
@@ -147,12 +147,14 @@ async function analyzePapers(apiKey, papersData) {
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: prompt },
           ],
-          temperature: 0.3,
-          top_p: 0.9,
+          temperature: 1.0,
+          top_p: 0.95,
           max_tokens: MAX_TOKENS,
+          stream: false,
+          chat_template_kwargs: { enable_thinking: false },
         };
 
-        const result = await callZhipu(apiKey, payload);
+        const result = await callNvidia(apiKey, payload);
 
         if (result.retry) {
           attempt--;
@@ -299,7 +301,7 @@ function generateHtml(analysis) {
     })
     .join("\n");
 
-  const modelUsed = "GLM-5-Turbo";
+  const modelUsed = "nvidia/nemotron-3-super-120b-a12b";
 
   return `<!DOCTYPE html>
 <html lang="zh-TW">
@@ -384,7 +386,7 @@ function generateHtml(analysis) {
       <div class="header-meta">
         <span class="badge badge-date">📅 ${dateDisplay}</span>
         <span class="badge badge-count">📊 ${totalCount} 篇文獻</span>
-        <span class="badge badge-source">Powered by PubMed + Zhipu AI</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
       </div>
     </div>
   </header>
@@ -439,9 +441,9 @@ function esc(s) {
 }
 
 async function main() {
-  const apiKey = process.env.ZHIPU_API_KEY;
+  const apiKey = process.env.NVIDIA_API_KEY;
   if (!apiKey) {
-    console.error("[ERROR] ZHIPU_API_KEY not set");
+    console.error("[ERROR] NVIDIA_API_KEY not set");
     process.exit(1);
   }
 

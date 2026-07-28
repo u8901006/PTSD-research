@@ -59,7 +59,7 @@ const html = `<!DOCTYPE html>
   <p class="count">共 ${total} 期報告</p>
   <ul>${links}</ul>
   <footer>
-    <p>Powered by PubMed + Zhipu AI &middot; <a href="https://github.com/u8901006/PTSD-research">GitHub</a></p>
+    <p>Powered by PubMed + NVIDIA Nemotron &middot; <a href="https://github.com/u8901006/PTSD-research">GitHub</a></p>
   </footer>
 </div>
 </body>

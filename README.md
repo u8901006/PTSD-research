@@ -5,7 +5,7 @@
 ## 架構
 
 - **文獻來源：** PubMed E-utilities API
-- **AI 分析：** 智譜 GLM-5-Turbo（備援：GLM-4.7 → GLM-4.7-Flash）
+- **AI 分析：** NVIDIA Nemotron 3 Super 120B（備援：NVIDIA Nemotron 3 Nano 30B）
 - **部署：** GitHub Pages
 - **排程：** 每日 GMT+8 07:50 自動執行
 
@@ -17,4 +17,4 @@
 
 需在 GitHub repo 設定 Secret：
 
-- `ZHIPU_API_KEY`：智譜 AI API 金鑰
+- `NVIDIA_API_KEY`：NVIDIA API 金鑰
