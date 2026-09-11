@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PTSD Research Daily &middot; 創傷後壓力研究日報 &middot; 2026年9月11日</title>
+<meta name="description" content="2026年9月11日 PTSD 創傷後壓力研究日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.4s both; }
+  .footer-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link .link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link .link-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link .link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>PTSD Research Daily &middot; 創傷後壓力研究日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年9月11日</span>
+        <span class="badge badge-count">📊 30 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日研究動態</h2>
+    <p class="summary-text">今日PTSD研究呈現多元焦點，涵蓋軍人與退伍軍人健康不平等、虛擬密集治療的可行性、災害後青少年PTSD預防，以及生物標記與神經機制的新發現，顯示個人化與可及性干預的趨勢。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">⭐</span>今日精選 TOP Picks</div><div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#1</span>
+      <span class="emoji-icon">💻</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>創新虛擬密集治療模式擴展創傷聚焦心理治療可及性：可行性研究初步證據</h3>
+    <p class="journal-source">Psychological trauma : theory, research, practice and policy &middot; Scaling massed evidence-based psychotherapies for posttraumatic stress disorder through virtual intensive treatment: Preliminary evidence from a feasibility study.</p>
+    <p>虛擬密集治療（vIT）在全美範圍內展現高需求、高完成率與良好臨床效能，證明透過跨州心理健康合約擴大醫療資源可行，對解決PTSD治療瓶頸具有重要意涵。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">188名現役軍人、退役軍人及符合資格家庭成員</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">虛擬密集治療（vIT），基於已驗證之人際密集治療計畫，每日一次，兩週期間</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照組（單組可行性研究）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">高治療啟動率（90.43%）、完成率（88.24%）、滿意度（96.4%）、PTSD與憂鬱顯著下降，且年需求增長50.67%</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">心理治療</span><span class="tag">數位健康</span><span class="tag">實施科學</span><span class="tag">退伍軍人</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42721348/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#2</span>
+      <span class="emoji-icon">🎖️</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>後9/11時代退伍軍人健康需求與參與：BRAVO隊列研究揭示性別與種族/民族健康不平等</h3>
+    <p class="journal-source">Military psychology : the official journal of the Division of Military Psychology, American Psychological Association &middot; Military service, healthcare needs, and healthcare engagement among post-9/11 veterans from the BRAVO Cohort Study.</p>
+    <p>在2,083名後9/11退伍軍人中，PTSD罹患率高達44.4%，女性與少數族裔群體暴露於軍事性暴力與骚擾風險顯著升高，而心理健康服務使用未隨需求增加，顯示照護不足。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">2,083名後9/11退伍軍人（37.3%為女性，平均年齡38.5歲）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（描述性隊列研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">按性別與種族/民族分層比較（特別是女性與Non-Hispanic Black男性）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD罹患率44.4%，女性及多種少數族裔群體PTSD風險升高；女性健康問題治療次數較多，但服務強度不足；軍事性暴力與騷擾分別達35.7%、50.0%，女性群體風險顯著更高。</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">退伍軍人</span><span class="tag">流行病學</span><span class="tag">社會決定因素</span><span class="tag">評估測量</span><span class="tag">道德損傷</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42721412/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#3</span>
+      <span class="emoji-icon">🌊</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>巴基斯坦青少年在洪水災後兩年仍顯著高PTSD罹患率：怒氣與體驗迴避為關鍵預測因素</h3>
+    <p class="journal-source">Psychological trauma : theory, research, practice and policy &middot; Posttraumatic stress disorder in adolescents of Pakistan: 2 years following the 2022 torrential flood.</p>
+    <p>在巴基斯坦南旁遮普地區受2022年特大洪水影響的青少年中，85.3%達到臨床PTSD門檻，怒氣與體驗迴避為主要預測因素，支持單次介入作為後災心理急救首選策略。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">450名巴基斯坦青少年（年齡12-18歲）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷流行病學調查）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照組</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">44.2%報告中度，33.8%報告重度PTSD症狀；使用Foa切點（≥31），85.3%達臨床門檻；怒氣（β=.51）與體驗迴避（β=.21）為顯著正向預測因素，最終模型解釋變異量34%。</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">災難</span><span class="tag">兒童創傷</span><span class="tag">評估測量</span><span class="tag">心理治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42721350/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#4</span>
+      <span class="emoji-icon">🧬</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>創傷後應激症候群與天然抗-NMDAR1自身抗體：創傷性腦傷後憂鬱與PTSD症狀的潛在神經保護因子</h3>
+    <p class="journal-source">Molecular psychiatry &middot; Natural anti-NMDAR1 autoantibodies are associated with lower risk for depression and PTSD symptoms after traumatic brain injury.</p>
+    <p>在具有創傷性腦傷史的現役男性中，較高水平的天然抗-NMDAR1自身抗體與較低的戰後憂鬱及PTSD症狀顯著相關，高表現組（上四分之一）預測症狀降低22-25%，提議其具神經保護或復原力功能。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">606名有創傷性腦傷史、419名無創傷性腦傷史的現役男性服役人員</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（觀察性研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">高 vs 低抗-NMDAR1自身抗體水平（上四分之一組）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">較高抗體水平與較低預測PTSD症狀顯著相關（p=0.0075），高抗體組CAPS-IV與BDI-II分數分別降低約4點與2點；預測中度-重度憂鬱症狀風險降低86%（OR=0.14）。</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">生物標記</span><span class="tag">創傷性腦傷</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42711406/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#5</span>
+      <span class="emoji-icon">💊</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>MDMA輔助心理治療對創傷後應激症候群、解離、憂鬱與功能障礙的效果：系統性文獻回顧與Meta分析</h3>
+    <p class="journal-source">Harvard review of psychiatry &middot; MDMA-Assisted Therapy May Decrease PTSD Symptoms, Dissociation, Depression, and Functional Disability: A Systematic Review and Meta-Analysis.</p>
+    <p>基於七項隨機對照試驗的Meta分析顯示，MDMA輔助心理治療可能顯著改善PTSD核心症狀、解離、憂鬱及功能障礙，但睡眠品質未見改善，證據儘管有樣本小及盲測困難等限制，仍支持其為新興治療選項。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">患有PTSD的成年人（來自七項RCT）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">MDMA輔助心理治療（MDMA-AT）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">低劑量MDMA或安慰劑加心理治療</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">MDMA-AT在PTSD、解離、憂鬱及功能障礙上較對照組顯著改善（標準化平均差異），睡眠品質無顯著差異。</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">MDMA輔助治療</span><span class="tag">心理治療</span><span class="tag">治療</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42708350/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#6</span>
+      <span class="emoji-icon">🪖</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>兒童時期逆境經驗與軍役中新發生PTSD之關聯：以色列國防軍新兵研究證實早期創傷為重要風險因子</h3>
+    <p class="journal-source">Military medicine &middot; Adverse Childhood Experiences and New-Onset of PTSD During Military Service.</p>
+    <p>在288,663名以色列國防軍新兵中，情感忽視與性虐待獨立預測新發生PTSD，ACE得分≥2者患PTSD風險近三倍（HR=2.799），支持早期生活逆境為軍役期間PTSD發展的關鍵危險因素。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">288,663名以色列國防軍新兵（2009-2021年入役）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（回顧式隊列研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">ACE得分 ≥2 vs ≤1</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">新發生PTSD風險：情感忽視（OR=2.268）、性虐待（OR=3.366）為顯著預測因子；ACE≥2組HR=2.799（P&lt;.001）；戰鬥服役與低社經地位亦為獨立預測因子。</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">兒童創傷</span><span class="tag">退伍軍人</span><span class="tag">流行病學</span><span class="tag">PTSD</span><span class="tag">神經生物學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42720513/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#7</span>
+      <span class="emoji-icon">👪</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>創傷後應激症候群與道德傷害在戰爭中的父母功能：以色列體內處理人員與平民的差異機制</h3>
+    <p class="journal-source">Psychological trauma : theory, research, practice and policy &middot; Parental competence during war: Aspects of resilience and moral injury among body handlers and civilians in Israel.</p>
+    <p>在加沙戰爭期間，創傷後壓力症狀透過道德傷害（體內處理人員）與心靈韌性（平民）分別影響父母功能，提示需區群體介入：前者需道德修復，後者需強化心靈資源。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">317名以色列父母（137名體內處理人員，180名平民）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷相關研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">體內處理人員 vs 平民</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">創傷後壓力症狀與父母功能降低顯著相關；體內處理人員中道德傷害為中介變數；平民中心靈韌性為保護性中介；創傷後壓力症狀對父母功能的直接效應在平民中更強。</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">道德損傷</span><span class="tag">心理治療</span><span class="tag">評估測量</span><span class="tag">災難</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42721351/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#8</span>
+      <span class="emoji-icon">🧠</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>創傷後應激症候群個體在性記憶回顧時生殖器官反應的流行率與情感體驗：創傷聚焦治療臨床樣本研究</h3>
+    <p class="journal-source">European journal of psychotraumatology &middot; Prevalence and emotional valence of genital responses related to sexual abuse memories in patients with PTSD.</p>
+    <p>在有性侵害史的PTSD患者中，34.4%回憶期間出現生殖器官反應，其中91.8%感羞恥、87.6%厭惡，負面情緒與PTSD嚴重程度正相關，建議臨床應評估此類身體反應以改善療程規劃。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">1,057名有性侵害史的PTSD患者（84.7%女性，平均年齡38.8歲）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷描述性研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">有 vs 無性記憶回顧時生殖器官反應群體</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">34.4%報告生殖器官反應；該群體PTSD更嚴重、受虐年齡更小、虐待頻率更高；負面情緒（羞恥、厭惡、自我憎恨）佔多數，且厭惡與自我憎恨與PTSD嚴重程度顯著正相關。</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">評估測量</span><span class="tag">伴侶暴力</span><span class="tag">PTSD</span><span class="tag">解離</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42704048/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">📚</span>其他值得關注的文獻</div><div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📊</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>創傷後應激症候群在佩爾津青少年中的機器學習預測：結合心理測驗與心率變異性</h3>
+    <p class="journal-source">European journal of psychotraumatology</p>
+    <p>負面情感、身體 immobilisation、童年虐待與應對策略結合心率變異性，可透過機器學習模型預測18個月後PTSD症狀軌跡，強調早期生物心理標記的預防價值。</p>
+    <div class="card-footer">
+      <span class="tag">機器學習</span><span class="tag">生物標記</span><span class="tag">兒童創傷</span><span class="tag">評估測量</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42703625/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🛩️</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>軍事遠端飛行系統人員心理健康與福祉：系統性文獻回顒</h3>
+    <p class="journal-source">BMJ military health</p>
+    <p>軍事RPAS人員PTSD罹患率約3.3%-6.7%，主要風險源於組織因素（如長工時、角色衝突），而非戰鬥暴露，提示職業壓力與道德傷害需納入健康監測。</p>
+    <div class="card-footer">
+      <span class="tag">退伍軍人</span><span class="tag">流行病學</span><span class="tag">道德損傷</span><span class="tag">心理治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42697599/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🔬</span>
+      <span class="utility-low utility-sm">低</span>
+    </div>
+    <h3>miR-124透過抑制海馬微胞質PYROPTOSIS緩解PTSD大鼠行為缺陷：針對P2X7R的分子機制研究</h3>
+    <p class="journal-source">Archives of biochemistry and biophysics</p>
+    <p>在PTSD大鼠模型中，miR-124經由下調P2X7R減少海馬微胞質發炎與PYROPTOSIS，改善突觸功能並緩解行為表型，揭示神經炎症為PTSD病機的新目標。</p>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">基因學</span><span class="tag">分子機制</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42697501/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🧠</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>創傷暴露青少年強迫症併發症：橫向時間研究顯示人際創傷與強迫症互動導致更高持續性創傷後壓力症狀</h3>
+    <p class="journal-source">Journal of affective disorders</p>
+    <p>具有強迫症及人際創傷的青少年，其創傷後壓力症狀基線較高且持續嚴重，韌性雖與較低症狀相關，但未特別緩解強迫症對人際創傷的負面影響。</p>
+    <div class="card-footer">
+      <span class="tag">兒童創傷</span><span class="tag">強迫症</span><span class="tag">韌性</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42697249/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🧪</span>
+      <span class="utility-low utility-sm">低</span>
+    </div>
+    <h3>硫化氫與創傷後應激症候群：慢性預創傷類固醇暴露如何影響恐懼記憶鞏固與基因表達</h3>
+    <p class="journal-source">Genes, brain, and behavior</p>
+    <p>慢性類固醇暴露在恐懼條件反射前減少記憶形成並改變海馬及前扣帶皮質類固醇受體表達， suggering 長期應激可能經由基因調適改變創傷記憶處理。</p>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">動物模型</span><span class="tag">應激反應</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42706822/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🧠</span>
+      <span class="utility-low utility-sm">低</span>
+    </div>
+    <h3>創傷後應激症候群與恐懼記憶情境誘導擷取：橫跨多腦區之長程神經通路揭示</h3>
+    <p class="journal-source">Zoological research</p>
+    <p>經由內側顳葉皮質-海馬CA1-旁海馬皮質-基底外側杏仁核之長程神經迴路介導情境誘發恐懼記憶擷取，解釋PTSD復發之神經基礎。</p>
+    <div class="card-footer">
+      <span class="tag">神經影像</span><span class="tag">神經生物學</span><span class="tag">記憶機制</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42706792/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🏥</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>後艾滋症候群在重症後存活者中的流行病學與長期結果：從認知障礙到創傷後壓力症狀</h3>
+    <p class="journal-source">Critical care clinics</p>
+    <p>重症監護後存活者常伴有長期神經精神症狀，包括創傷後壓力症狀、認知障礙與功能依賴，提醒危重病後隨訪需納入心理健康篩查。</p>
+    <div class="card-footer">
+      <span class="tag">重症醫學</span><span class="tag">PTSD</span><span class="tag">神經精神症狀</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42686292/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">👩‍❤️‍👨</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>親密伴侶暴力受害男性中的創傷後應激症候群： masculinity rules 的調節效應檢驗顯示族群差異</h3>
+    <p class="journal-source">Acta psychologica</p>
+    <p>在非拉美白人與拉美男性中，親密伴侶暴力與masculinity norms共同預測PTSD，但在非拉黑人男性中，僅暴力經驗為顯著預測因子，masculinity norms未調節任何族群的關聯。</p>
+    <div class="card-footer">
+      <span class="tag">伴侶暴力</span><span class="tag">PTSD</span><span class="tag">社會決定因素</span><span class="tag">評估測量</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42710294/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">⚡</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>虛擬頸部迷走神經刺激對創傷後應激症候群與阿片使用障礙者自主神經功能的影響：文獻回顒</h3>
+    <p class="journal-source">Stress (Amsterdam, Netherlands)</p>
+    <p>經皮頸部迷走神經刺激（tcVNS）可改善自律神經張力、心血管功能與炎症反應，並在前腦情緒調節區顯示活化，對PTSD與OUD具有潛在療效。</p>
+    <div class="card-footer">
+      <span class="tag">數位健康</span><span class="tag"> neuromodulation</span><span class="tag">PTSD</span><span class="tag">物質使用</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42698268/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📋</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>重度傷害歐洲 Cohort 中患者回報結果測量的系統性文獻回顒與Meta分析：生活品質持續受損</h3>
+    <p class="journal-source">European journal of trauma and emergency surgery : official publication of the European Trauma Society</p>
+    <p>歐洲重度傷者一年後生活品質（EQ-5D-3L=0.70）及視覺模擬分數（VAS=68）顯示持續功能受損，創傷後應激症狀為常見回報問題之一（9%研究使用），但工具異質性限制比較。</p>
+    <div class="card-footer">
+      <span class="tag">PTSD</span><span class="tag">生活品質</span><span class="tag">評估測量</span><span class="tag">創傷</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42696117/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💞</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>癒合在一起：MDMA增強認知行為夫妻療法治療創傷後應激症候群的試驗試點結果</h3>
+    <p class="journal-source">Journal of traumatic stress</p>
+    <p>在八對美軍退伍軍人夫妻中，MDMA輔助bCBCT顯著減少PTSD症狀（d=1.25）並顯著改善關係功能（退伍軍人d=1.83，伴侶d=1.29），無嚴重不良事件，支持其作為關係導向創傷療法的潛力。</p>
+    <div class="card-footer">
+      <span class="tag">MDMA輔助治療</span><span class="tag">心理治療</span><span class="tag">伴侶暴力</span><span class="tag">退伍軍人</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42693902/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">❤️</span>
+      <span class="utility-low utility-sm">低</span>
+    </div>
+    <h3>軍事人口中創傷後應激症候群與心代謝健康之縱向關聯：範疇性文獻回顒</h3>
+    <p class="journal-source">Journal of traumatic stress</p>
+    <p>軍人中PTSD預測高血壓的證據較一致，但對血糖、血脂及炎症標誌物的關係不明確，缺乏雙向縱向研究，需更多前瞻性工作以闡明 temporality。</p>
+    <div class="card-footer">
+      <span class="tag">心代謝</span><span class="tag">退伍軍人</span><span class="tag">流行病學</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42693885/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💻</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>退伍軍人對創傷後應激症候群不同治療方式的偏好與態度：數位介入的預測因子分析</h3>
+    <p class="journal-source">Journal of traumatic stress</p>
+    <p>退伍軍人最偏好面對面治療，其次為遠程醫療，數位介入接受度中等，但缺乏 familiarity 是主要障礙；較高 self-stigma 與 service-connected 者較傾向選擇數位選項。</p>
+    <div class="card-footer">
+      <span class="tag">退伍軍人</span><span class="tag">數位健康</span><span class="tag">心理治療</span><span class="tag">實施科學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42693834/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🤝</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>人際連結如何塑造拉丁美洲移民健康：創傷、歸屬感與復原力的互動探討</h3>
+    <p class="journal-source">Health psychology : official journal of the Division of Health Psychology, American Psychological Association</p>
+    <p>近期移民拉丁美洲青少年與家庭常見創傷暴露（如家庭分離），而依附、同儕網絡與文化價值等人際資源則與心理適應與復原力相關，提醒需以人際視角理解健康不平等。</p>
+    <div class="card-footer">
+      <span class="tag">兒童創傷</span><span class="tag">社會決定因素</span><span class="tag">心理治療</span><span class="tag">難民</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42721337/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">😶‍🌫️</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>創傷後應激症候群中的Alexithymia與悖論式調節成功：生態瞬間評量研究揭示主觀調節感知可能誤導真實情緒結果</h3>
+    <p class="journal-source">Emotion (Washington, D.C.)</p>
+    <p>高Alexithymia個體越感覺調節成功，其後情緒清晰度竟越低，並預測隨時間PTSD症狀惡化，提示其調節監測功能受損，主觀感受可能掩飾真實情緒失調。</p>
+    <div class="card-footer">
+      <span class="tag">評估測量</span><span class="tag">情緒調節</span><span class="tag">PTSD</span><span class="tag">神經生物學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42721324/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💔</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>醫療照護者同情疲劳、創傷間接體驗與二手創傷壓力：以人hood 理論為架構的系統性範圍文獻回顒</h3>
+    <p class="journal-source">PloS one</p>
+    <p>醫師在照顧重病患者時易受同情疲劳影響，其核心不僅是情緒耗竭，更涉及信念系統與專業身份形成的深層擾亂，與二手創傷及間接體驗形成連續體，提醒需從人hood 角度照護照護者自身。</p>
+    <div class="card-footer">
+      <span class="tag">心理治療</span><span class="tag">道德損傷</span><span class="tag">壓力</span><span class="tag">醫療照護者</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42721153/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🧬</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>自然抗-NMDAR1自身抗體與創傷性腦傷後憂鬱及PTSD症狀風險降低相關：分子精神病學新發現</h3>
+    <p class="journal-source">Molecular psychiatry</p>
+    <p>具創傷性腦傷史者，較高前排自我抗體水平預測較低戰後憂鬱與PTSD症狀，高表現組症狀降低約22-25%，提議其為神經保護或復原力因子。</p>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">生物標記</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42711406/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">👶</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>大規模災難後兒童心理健康：小兒科醫師的角色與責任</h3>
+    <p class="journal-source">Pediatric clinics of North America</p>
+    <p>兒童在大規模災難後易創傷後應激、焦慮與身體不適，小兒科醫師需具創傷知識、主動溝通與跨域協作能力，以有效支援復原。</p>
+    <div class="card-footer">
+      <span class="tag">兒童創傷</span><span class="tag">災難</span><span class="tag">心理治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42711059/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🕊️</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>緬甸難民心理健康系統性文獻回顒：高負擔且受情境影響深刻</h3>
+    <p class="journal-source">BJPsych open</p>
+    <p>緬甸難民常見憂鬱（30.0-89.0%）、焦慮（39.3-41.8%）與PTSD（3.7-61.2%），貧困、缺乏社會支持與創傷經驗為主要風險因子，經濟機會與社會融合為保護因子。</p>
+    <div class="card-footer">
+      <span class="tag">難民</span><span class="tag">PTSD</span><span class="tag">流行病學</span><span class="tag">社會決定因素</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42702520/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📄</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>加拿大工人補償制度中創傷後應激症候群的預設保障政策：2001-2019年追溯時間序列分析</h3>
+    <p class="journal-source">American journal of industrial medicine</p>
+    <p>限制於PTSD的預設保障政策增加該病傷害申請（IRR=1.237)，但未顯著影響其他心理狀況，較寬鬆政策則同時提升PTSD與非PTSD心理申請，顯示政策設計將影響理賠結構。</p>
+    <div class="card-footer">
+      <span class="tag">PTSD</span><span class="tag">社會決定因素</span><span class="tag">實施科學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42701871/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🤝</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>肝硬化患者社會支持與創傷後應激症狀之關聯：控制感與迴避應對的鏈式中介效應驗證</h3>
+    <p class="journal-source">Medicine</p>
+    <p>肝硬化患者 perceived social support 直接且間接降低PTSS，途徑經由 sense of control 與 internalization/externalization 迴避應解，鏈式中介佔總效應25.21%，提示提升控制感與減少迴避為關鍵介入點。</p>
+    <div class="card-footer">
+      <span class="tag">PTSD</span><span class="tag">社會決定因素</span><span class="tag">心理治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42700067/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">😴</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>晚間睡眠增強創傷後應激症候群中恐懼滅絕記憶的回顧：睡眠階段對滅絕與安全記憶的影響研究</h3>
+    <p class="journal-source">Psychiatry research</p>
+    <p>在可能PTSD成人中，晚間睡眠（富含REM）相較於正常睡眠增強威脅訊號的滅絕回顧（降低SCR），雖早晚睡眠限制在恢復夜後可能有保護性反彈，但結果支持REM富集睡眠對滅絕記憶的有益作用。</p>
+    <div class="card-footer">
+      <span class="tag">睡眠</span><span class="tag">PTSD</span><span class="tag">神經生物學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42659753/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">📊</span>主題分佈</div><div class="topic-row">
+      <span class="topic-name">治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+      <span class="topic-count">15</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">神經生物學</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+      <span class="topic-count">12</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">評估測量</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:55%"></div></div>
+      <span class="topic-count">11</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">退伍軍人</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:45%"></div></div>
+      <span class="topic-count">9</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">兒童創傷</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div>
+      <span class="topic-count">8</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">災難</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:35%"></div></div>
+      <span class="topic-count">7</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">社會決定因素</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:35%"></div></div>
+      <span class="topic-count">7</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">心理治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:80%"></div></div>
+      <span class="topic-count">16</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">PTSD</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+      <span class="topic-count">20</span>
+    </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">🏷️</span>關鍵字</div><div class="keywords"><span class="keyword">PTSD</span><span class="keyword">治療</span><span class="keyword">退伍軍人</span><span class="keyword">神經生物學</span><span class="keyword">災難</span><span class="keyword">兒童創傷</span><span class="keyword">評估測量</span><span class="keyword">MDMA輔助治療</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">🏥</span>
+      <span class="link-name">李政洋身心診所首頁</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">📬</span>
+      <span class="link-name">訂閱電子報</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link" target="_blank">
+      <span class="link-icon">☕</span>
+      <span class="link-name">Buy me a coffee</span>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/PTSD-research">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
