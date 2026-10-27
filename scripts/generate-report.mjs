@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const API_BASE = process.env.NVIDIA_API_BASE || "https://integrate.api.nvidia.com/v1";
-const MODELS = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"];
+const MODELS = ["nvidia/nemotron-3-ultra-550b-a55b"];
 const MAX_TOKENS = 16384;
 const TIMEOUT_MS = 480_000;
 
@@ -301,7 +301,7 @@ function generateHtml(analysis) {
     })
     .join("\n");
 
-  const modelUsed = "nvidia/nemotron-3-super-120b-a12b";
+  const modelUsed = "nvidia/nemotron-3-ultra-550b-a55b";
 
   return `<!DOCTYPE html>
 <html lang="zh-TW">
