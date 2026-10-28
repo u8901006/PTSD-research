@@ -301,7 +301,7 @@ function generateHtml(analysis) {
     })
     .join("\n");
 
-  const modelUsed = "nvidia/nemotron-3-ultra-550b-a55b";
+  const modelUsed = analysis._model || MODELS[0];
 
   return `<!DOCTYPE html>
 <html lang="zh-TW">
