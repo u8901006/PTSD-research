@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PTSD Research Daily &middot; 創傷後壓力研究日報 &middot; 2026年11月19日</title>
+<meta name="description" content="2026年11月19日 PTSD 創傷後壓力研究日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.4s both; }
+  .footer-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link .link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link .link-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link .link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>PTSD Research Daily &middot; 創傷後壓力研究日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月19日</span>
+        <span class="badge badge-count">📊 21 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日研究動態</h2>
+    <p class="summary-text">本日研究亮點包括：1) psychedelic-assisted therapy（MDMA）在PTSD之成本效益證據不斷增強，成為潛在成本效益高的治療選項；2) 共病PTSD/MDD顯著增加服役人員及退伍軍人自殺風險，提醒臨床需進行併併症篩檢；3) 電磁刺激（rTMS）治療PTSD之 placibo 效應顯著，特定腦區（DMPFC）優於DLPFC，但維持效果受共藥影響；4) 敘事性文獻綜述釐清了PTSD伴隨併症（MDD、失眠、AUD、psychosis）之藥物治療策略；5) 儿童PTSD藥物治療證據薄弱，僅作為輔助而非主要治療。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">⭐</span>今日精選 TOP Picks</div><div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#1</span>
+      <span class="emoji-icon">💰</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Cost-effectiveness of psychedelic-assisted therapies for depression and post-traumatic stress disorder: A systematic review.</h3>
+    <p class="journal-source">Psychiatry research &middot; Cost-effectiveness of psychedelic-assisted therapies for depression and post-traumatic stress disorder: A systematic review.</p>
+    <p>系統綜述證實MDMA輔助治療在高收入國家相當具成本效益，但PAT對治療難治性憂鬱證據有限，顯示 psychedelic therapy 已成為 PTSD 成本效益評估的重要新紀元。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">PTSD 和 depression 患者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text"> psychedelic-assisted therapy (MDMA-AT 或 PAT)</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">standard of care</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">incremental cost-effectiveness ratios (ICERs), cost-effectiveness under WTP thresholds</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">成本效益</span><span class="tag">PTSD</span><span class="tag">MDMA輔助治療</span><span class="tag">經濟評估</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43050838/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#2</span>
+      <span class="emoji-icon">⚠️</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>The relative risk of probable comorbid PTSD and MDD on future suicide attempts in service members and veterans: Results from the prospective PRISM study.</h3>
+    <p class="journal-source">Journal of affective disorders &middot; The relative risk of probable comorbid PTSD and MDD on future suicide attempts in service members and veterans: Results from the prospective PRISM study.</p>
+    <p>共病PTSD/MDD顯著提升自殺風險，於追蹤年內3.2%樣本嘗試自殺，強調在軍中退伍人群中進行併併症篩檢的臨床必要性。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">U.S. active duty service members and veterans</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">brief screening measures for PTSD and MDD</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">four diagnostic groups (neither, PTSD only, MDD only, comorbid)</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">longitudinal suicide attempts, suicidal ideation, and cognitions</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">自殺</span><span class="tag">併併症</span><span class="tag">退伍軍人</span><span class="tag">流行病學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43051378/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#3</span>
+      <span class="emoji-icon">💊</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Pharmacologic Rationale and Clinical Evidence for Treatments that Target Monoamine Dysregulation in Post-Traumatic Stress Disorder: A Narrative Review.</h3>
+    <p class="journal-source">CNS drugs &middot; Pharmacologic Rationale and Clinical Evidence for Treatments that Target Monoamine Dysregulation in Post-Traumatic Stress Disorder: A Narrative Review.</p>
+    <p>全面回顧PTSD monoamine系統（5-HT、NE、DA）之藥物治療，整理出sertraline、paroxetine、venlafaxine證據最充分，輔助指導臨床藥物選擇與off-label使用風險評估。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">PTSD 患者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">monoamine-targeting pharmacotherapy (SSRIs, SNRIs, atypical antipsychotics)</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">off-label vs on-label treatments</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">efficacy on diagnostic PTSD symptoms, safety profiles</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">藥物治療</span><span class="tag">monoamine</span><span class="tag">sertraline</span><span class="tag">venlafaxine</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43050136/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#4</span>
+      <span class="emoji-icon">📱</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>RescQTM: One-year implementation and feasibility results of a digitally enabled support pathway for bystanders of out-of-hospital cardiac arrest.</h3>
+    <p class="journal-source">Resuscitation &middot; RescQTM: One-year implementation and feasibility results of a digitally enabled support pathway for bystanders of out-of-hospital cardiac arrest.</p>
+    <p>數位支援路徑RescQ在一年評估中證實可行性，達到預可行性門檻，50.9%事件層級捕獲率與96.2%註冊者存取數位資源，展示數位健康在創傷後支援之潛力。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">out-of-hospital cardiac arrest bystanders</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">digitally enabled support pathway (RescQ)</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">routine EMS practice</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">incident-level capture rate, digital access, liaison officer support uptake</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">數位健康</span><span class="tag">急創傷</span><span class="tag">支援路徑</span><span class="tag">bystander</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43044725/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#5</span>
+      <span class="emoji-icon">🩺</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Concomitant Psychotropic Medication Is Associated with Reduced Outcomes of Trauma-Focused Psychotherapy for Post-Traumatic Stress Disorder.</h3>
+    <p class="journal-source">Psychotherapy and psychosomatics &middot; Concomitant Psychotropic Medication Is Associated with Reduced Outcomes of Trauma-Focused Psychotherapy for Post-Traumatic Stress Disorder.</p>
+    <p>共同使用精神藥物顯著降低創傷焦點心理治療成效，藥物類別包括抗憂鬍藥（阿米替林、米拉塔平）、抗痙攣藥、抗精神病藥與特定安眠劑，提醒臨床在整合治療時需審視藥物干擾因素。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">adults with chronic or delayed-onset PTSD</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">trauma-focused psychotherapy (prolonged exposure, EMDR)</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">with vs. without psychotropic co-medication</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">change in CAPS-5 scores, 6-month follow-up outcomes</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">心理治療</span><span class="tag">併用藥物</span><span class="tag">EMDR</span><span class="tag">Prolonged exposure</span><span class="tag">治療結果</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43038311/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#6</span>
+      <span class="emoji-icon">🧠</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>Written exposure therapy for post-traumatic stress disorder in individuals with emergent psychosis: a case series.</h3>
+    <p class="journal-source">European journal of psychotraumatology &middot; Written exposure therapy for post-traumatic stress disorder in individuals with emergent psychosis: a case series.</p>
+    <p>written exposure therapy (WET) 在 emerging psychosis 患者中具可行性與安全性，未加重精神病症狀，PTSD症狀顯著減少，為此類複雜病例提供創傷焦點介入的新選項。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">individuals with emergent psychosis and comorbid PTSD</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">written exposure therapy (WET)</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">routine care</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD symptom severity (PCL-5), psychotic symptom changes</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">創傷焦點治療</span><span class="tag">written exposure therapy</span><span class="tag">emergent psychosis</span><span class="tag">安全性</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43017886/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#7</span>
+      <span class="emoji-icon">🧒</span>
+      <span class="utility-low">低實用性</span>
+    </div>
+    <h3>Antipsychotic Use in Pediatric Posttraumatic Stress Disorder and Trauma-Related Disorders.</h3>
+    <p class="journal-source">Child and adolescent psychiatric clinics of North America &middot; Antipsychotic Use in Pediatric Posttraumatic Stress Disorder and Trauma-Related Disorders.</p>
+    <p>兒童PTSD藥物治療證據薄弱，抗精神應藥僅作為輔助、時間有限、症狀特異使用，須密切監控代謝與神經發展效應，強調心理治療與風險最小化為優先。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">children and adolescents with PTSD and trauma-related disorders</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">antipsychotic medications</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">adjunctive role within trauma-informed care</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">metabolic, neurologic, and potential neurodevelopmental effects; symptom-specific benefits</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">兒童創傷</span><span class="tag">抗精神應藥</span><span class="tag">輔助治療</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43051739/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">📚</span>其他值得關注的文獻</div><div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">👩‍⚕️</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Psychological Trauma Among Labor and Delivery Nurses and Trauma-Informed Care.</h3>
+    <p class="journal-source">Journal of obstetric, gynecologic, and neonatal nursing : JOGNN</p>
+    <p>營養分娩護理人員承受高創傷水準，82.6%高於PTSD篩檢切點，但創傷嚴重程度與創傷知情照護態度無顯著預測關係，組織支援（訓練、編制、資源）為關鍵影響因子。</p>
+    <div class="card-footer">
+      <span class="tag">創傷知情照護</span><span class="tag">職業創傷</span><span class="tag">Secondary Traumatic Stress</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43051265/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💰</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Cost-effectiveness of psychedelic-assisted therapies for depression and post-traumatic stress disorder: A systematic review.</h3>
+    <p class="journal-source">Psychiatry research</p>
+    <p>系統綜述證實MDMA輔助治療在高收入國家相當具成本效益，但PAT對治療難治性憂鬱證據有限，顯示 psychedelic therapy 已成為 PTSD 成本效益評估的重要新紀元。</p>
+    <div class="card-footer">
+      <span class="tag">成本效益</span><span class="tag">PTSD</span><span class="tag">MDMA輔助治療</span><span class="tag">經濟評估</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43050838/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">⚠️</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>The relative risk of probable comorbid PTSD and MDD on future suicide attempts in service members and veterans: Results from the prospective PRISM study.</h3>
+    <p class="journal-source">Journal of affective disorders</p>
+    <p>共病PTSD/MDD顯著提升自殺風險，於追蹤年內3.2%樣本嘗試自殺，強調在軍中退伍人群中進行併併症篩檢的臨床必要性。</p>
+    <div class="card-footer">
+      <span class="tag">自殺</span><span class="tag">併併症</span><span class="tag">退伍軍人</span><span class="tag">流行病學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43051378/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💊</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Pharmacologic Rationale and Clinical Evidence for Treatments that Target Monoamine Dysregulation in Post-Traumatic Stress Disorder: A Narrative Review.</h3>
+    <p class="journal-source">CNS drugs</p>
+    <p>全面回顧PTSD monoamine系統（5-HT、NE、DA）之藥物治療，整理出sertraline、paroxetine、venlafaxine證據最充分，輔助指導臨床藥物選擇與off-label使用風險評估。</p>
+    <div class="card-footer">
+      <span class="tag">藥物治療</span><span class="tag">monoamine</span><span class="tag">sertraline</span><span class="tag">venlafaxine</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43050136/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📱</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>RescQTM: One-year implementation and feasibility results of a digitally enabled support pathway for bystanders of out-of-hospital cardiac arrest.</h3>
+    <p class="journal-source">Resuscitation</p>
+    <p>數位支援路徑RescQ在一年評估中證實可行性，達到預可行性門檻，50.9%事件層級捕獲率與96.2%註冊者存取數位資源，展示數位健康在創傷後支援之潛力。</p>
+    <div class="card-footer">
+      <span class="tag">數位健康</span><span class="tag">急創傷</span><span class="tag">支援路徑</span><span class="tag">bystander</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43044725/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🩺</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Concomitant Psychotropic Medication Is Associated with Reduced Outcomes of Trauma-Focused Psychotherapy for Post-Traumatic Stress Disorder.</h3>
+    <p class="journal-source">Psychotherapy and psychosomatics</p>
+    <p>共同使用精神藥物顯著降低創傷焦點心理治療成效，藥物類別包括抗憂鬍藥（阿米替林、米拉塔平）、抗痙攣藥、抗精神病藥與特定安眠劑，提醒臨床在整合治療時需審視藥物干擾因素。</p>
+    <div class="card-footer">
+      <span class="tag">心理治療</span><span class="tag">併用藥物</span><span class="tag">EMDR</span><span class="tag">Prolonged exposure</span><span class="tag">治療結果</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43038311/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🧠</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Written exposure therapy for post-traumatic stress disorder in individuals with emergent psychosis: a case series.</h3>
+    <p class="journal-source">European journal of psychotraumatology</p>
+    <p>written exposure therapy (WET) 在 emerging psychosis 患者中具可行性與安全性，未加重精神病症狀，PTSD症狀顯著減少，為此類複雜病例提供創傷焦點介入的新選項。</p>
+    <div class="card-footer">
+      <span class="tag">創傷焦點治療</span><span class="tag">written exposure therapy</span><span class="tag">emergent psychosis</span><span class="tag">安全性</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43017886/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🧒</span>
+      <span class="utility-low utility-sm">低</span>
+    </div>
+    <h3>Antipsychotic Use in Pediatric Posttraumatic Stress Disorder and Trauma-Related Disorders.</h3>
+    <p class="journal-source">Child and adolescent psychiatric clinics of North America</p>
+    <p>兒童PTSD藥物治療證據薄弱，抗精神應藥僅作為輔助、時間有限、症狀特異使用，須密切監控代謝與神經發展效應，強調心理治療與風險最小化為優先。</p>
+    <div class="card-footer">
+      <span class="tag">兒童創傷</span><span class="tag">抗精神應藥</span><span class="tag">輔助治療</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43051739/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🌍</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Measurement invariance of the Clinician Administered PTSD Scale for DSM-5 between trauma-exposed non-Western refugee patients and Dutch patients seeking treatment for PTSD.</h3>
+    <p class="journal-source">European journal of psychotraumatology</p>
+    <p>CAPS-5 在非西方難民與荷蘭患者間量測不存在顯著差異，但難民普遍獲得較高症狀嚴重度評分，提醒跨文化評估需考慮閾值差異。</p>
+    <div class="card-footer">
+      <span class="tag">評估測量</span><span class="tag">跨文化</span><span class="tag">CAPS-5</span><span class="tag">難民</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43013472/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🇮🇱</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Resilience and vulnerability factors for post-traumatic symptoms among Israeli adults: the aftermath of 7 October events.</h3>
+    <p class="journal-source">European journal of psychotraumatology</p>
+    <p>創傷相關變項僅解釋12.4%PTSD變異，完整模型解釋43%，主要預測因子包括創傷前社交滿意度、社區參與、功能衰退、治療、新聞曝光與生命滿意度，凸顯主觀經驗在PTSD發展中的核心角色。</p>
+    <div class="card-footer">
+      <span class="tag">韌性</span><span class="tag">脆弱性</span><span class="tag">創傷後應激</span><span class="tag">國際研究</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43013471/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📝</span>
+      <span class="utility-low utility-sm">低</span>
+    </div>
+    <h3>Response to the Letter to the Editor by Chang et al. regarding: &quot;New-onset autoimmunity in people living with post-traumatic stress disorder&quot;.</h3>
+    <p class="journal-source">Brain, behavior, and immunity</p>
+    <p></p>
+    <div class="card-footer">
+      <span class="tag">自身免疫</span><span class="tag">PTSD</span><span class="tag">病例回應</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43035184/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🩹</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Pain Management in the Trauma Patient.</h3>
+    <p class="journal-source">Emergency medicine clinics of North America</p>
+    <p>創傷患者疼痛管理需多模式方案，包含非阿片藥物、κ阿片受體調節劑與非藥物策略，以減少阿片使用與長期後遺症風險。</p>
+    <div class="card-footer">
+      <span class="tag">疼痛管理</span><span class="tag">創傷</span><span class="tag">多模式分析</span><span class="tag">阿片減量</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43039519/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🔬</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Machine learning and bioinformatics identify candidate plasma chemokine signatures in PTSD.</h3>
+    <p class="journal-source">Journal of psychiatric research</p>
+    <p>整合機器學習與生物資訊識別出70名作戰後國民警衛兵中PTSD相關之血漿趨化因子簇集，AUC=0.68，支援血漿生物標記在PTSD診斷與風險評估中的潛力。</p>
+    <div class="card-footer">
+      <span class="tag">生物標記</span><span class="tag">血漿</span><span class="tag">機器學習</span><span class="tag">化學因子</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43038695/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">👫</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Cognitive-behavioral conjoint therapy for posttraumatic stress disorder: A systematic review of outcomes, mechanisms, and clinical applications.</h3>
+    <p class="journal-source">Journal of traumatic stress</p>
+    <p>認知行為 conjoint therapy (CBCT) for PTSD 證實改善PTSD症狀，關係滿意度結果不一，基線關係滿意度為調節因子，支援以伴侶為導向之創傷治療方案。</p>
+    <div class="card-footer">
+      <span class="tag">心理治療</span><span class="tag">CBCT</span><span class="tag">伴侶治療</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43034270/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">📊</span>主題分佈</div><div class="topic-row">
+      <span class="topic-name">治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+      <span class="topic-count">28</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">心理治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:68%"></div></div>
+      <span class="topic-count">19</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">藥物治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:54%"></div></div>
+      <span class="topic-count">15</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">PTSD</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+      <span class="topic-count">14</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">成本效益</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:29%"></div></div>
+      <span class="topic-count">8</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">神經生物學</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:21%"></div></div>
+      <span class="topic-count">6</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">生物標記</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:18%"></div></div>
+      <span class="topic-count">5</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">兒童創傷</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:14%"></div></div>
+      <span class="topic-count">4</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">退伍軍人</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:14%"></div></div>
+      <span class="topic-count">4</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">數位健康</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:11%"></div></div>
+      <span class="topic-count">3</span>
+    </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">🏷️</span>關鍵字</div><div class="keywords"><span class="keyword">PTSD</span><span class="keyword">pharmacotherapy</span><span class="keyword">psychotherapy</span><span class="keyword">cost-effectiveness</span><span class="keyword">biomarkers</span><span class="keyword">comorbidity</span><span class="keyword">digital health</span><span class="keyword">child trauma</span><span class="keyword">military veterans</span><span class="keyword">resilience</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">🏥</span>
+      <span class="link-name">李政洋身心診所首頁</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">📬</span>
+      <span class="link-name">訂閱電子報</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link" target="_blank">
+      <span class="link-icon">☕</span>
+      <span class="link-name">Buy me a coffee</span>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3.5-lightning-30b-a3b</span>
+    <span><a href="https://github.com/u8901006/PTSD-research">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
