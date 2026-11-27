@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PTSD Research Daily &middot; 創傷後壓力研究日報 &middot; 2026年11月27日</title>
+<meta name="description" content="2026年11月27日 PTSD 創傷後壓力研究日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.4s both; }
+  .footer-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link .link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link .link-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link .link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>PTSD Research Daily &middot; 創傷後壓力研究日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月27日</span>
+        <span class="badge badge-count">📊 15 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日研究動態</h2>
+    <p class="summary-text">本日研究動態集中在治療創新與邊緣人群風險評估。數位治療方案（如mHealth、在線小組）顯示中小效果，但應用廣泛；MDMA輔助治療與massed exposure顯現潛力；戰爭與災難背景下的PTSD流行率仍居高不下，尤其對難民與退伍軍人；此外，睡眠、認知功能與創傷的關係與評估工具的文化適應性成為熱門話題。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">⭐</span>今日精選 TOP Picks</div><div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#1</span>
+      <span class="emoji-icon">🌍</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>War-related post-traumatic stress disorder among conflict-affected civilians: an umbrella review of systematic reviews and meta-analyses.</h3>
+    <p class="journal-source">Global health action &middot; War-related post-traumatic stress disorder among conflict-affected civilians: an umbrella review of systematic reviews and meta-analyses.</p>
+    <p>戰爭相關PTSD在難民與內部流離失所者中流行率極高（11.6%-61.9%），但文獻方法學質素極低，現有估計值不可靠，急需標準化評估與創傷焦慮治療。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">衝突影響平民（難民、IDP、非流離失所者）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無特定介入（觀察性研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">各地戰區比較</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD患病率與風險因子</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">流行病學</span><span class="tag">戰爭</span><span class="tag">難民</span><span class="tag">系統性複習</span><span class="tag">心理健康</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43094374/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#2</span>
+      <span class="emoji-icon">💻</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>Digital therapeutics and mHealth interventions for PTSD and depression among military veterans: A systematic review and meta-analysis.</h3>
+    <p class="journal-source">Military psychology &middot; Digital therapeutics and mHealth interventions for PTSD and depression among military veterans: A systematic review and meta-analysis.</p>
+    <p>數位介入顯著降低PTSD與憂憂症狀（g=-0.47, -0.42），但完成率僅62.5%，證據確定性低，作為輔助心理健康服務具潛力但需更嚴謹試驗。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">軍中退伍軍人</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">數位治療/移動健康應用程式</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規照護或控制組</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD與憂鬱症狀嚴重程度與退費率</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">數位健康</span><span class="tag">mHealth</span><span class="tag">退伍軍人</span><span class="tag">系統性複習</span><span class="tag">治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43071846/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#3</span>
+      <span class="emoji-icon">🏥</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Mobilizing the Critically Ill: The Central Role of Nurses in Preventing ICU Complications and Enhancing Recovery.</h3>
+    <p class="journal-source">Critical care nursing quarterly &middot; Mobilizing the Critically Ill: The Central Role of Nurses in Preventing ICU Complications and Enhancing Recovery.</p>
+    <p>早期活動對危重病人有顯著益處，護理師作為主要推動者，能改善長期認知與功能預後，其在離軛、 delirium 預防中的角色備受重視。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">危重病人</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">早期活動/護理乙動介入</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規照護</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ICU併發症、住院天數、長期認知功能</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">ICU</span><span class="tag">活動</span><span class="tag">delirium</span><span class="tag">康復</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43077613/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#4</span>
+      <span class="emoji-icon">📊</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>Non-pharmacological augmentation of trauma-focused psychotherapy for PTSD: a systematic review and meta-analysis.</h3>
+    <p class="journal-source">European journal of psychotraumatology &middot; Non-pharmacological augmentation of trauma-focused psychotherapy for PTSD: a systematic review and meta-analysis.</p>
+    <p>總計39項研究未顯示整體顯著增益，僅睡眠相關增益顯著，提示單純外掛介入效果有限，需重新思考輔助策略。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">PTSD患者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">創傷焦點心理治療外掛（如睡眠訓練）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">創傷焦點治療單獨進行</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD症狀嚴重程度、回應率、退費</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">暴露治療</span><span class="tag">meta分析</span><span class="tag">輔助治療</span><span class="tag">睡眠</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43053690/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#5</span>
+      <span class="emoji-icon">🔬</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>From Synaptic Dysfunction to Precision Psychopharmacology: Integrating Neuroimmune, Metabolic, and Epigenetic Mechanisms Across Major Psychiatric Disorders.</h3>
+    <p class="journal-source">Molecular neurobiology &middot; From Synaptic Dysfunction to Precision Psychopharmacology: Integrating Neuroimmune, Metabolic, and Epigenetic Mechanisms Across Major Psychiatric Disorders.</p>
+    <p>提供跨障礙的生物學機制概觀，闕取突顯神經遞質、神經免疫、代謝與表觀遺傳在PTSD中的角色，支援精準精神藥理治療的未來方向。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">主要精神疾病（含PTSD）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">多機制整合研究（無直接臨床介入）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">各障礙間比較</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">病理機制洞見與生物標誌潛力</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">生物標誌</span><span class="tag">遺傳學</span><span class="tag">精準醫療</span><span class="tag">機制研究</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43062544/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#6</span>
+      <span class="emoji-icon">⚠️</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Tonic Immobility and Peritraumatic Dissociation as Risk Factors for Posttraumatic Stress Disorder: A Systematic Review and Narrative Synthesis.</h3>
+    <p class="journal-source">Trauma, violence &amp; abuse &middot; Tonic Immobility and Peritraumatic Dissociation as Risk Factors for Posttraumatic Stress Disorder: A Systematic Review and Narrative Synthesis.</p>
+    <p>Tonic immobility與peritraumatic dissociation與PTSD顯著正相關，作為早期臨床風險評估的潛在指標，雖需驗證但臨床意涵明確。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">性侵或人際創傷生存者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（觀察性/風險因子）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD結論</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">解離</span><span class="tag">創傷反應</span><span class="tag">系統性複習</span><span class="tag">臨床風險</span><span class="tag">PTSD</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43062194/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#7</span>
+      <span class="emoji-icon">📏</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Measurement invariance of the Clinician Administered PTSD Scale for DSM-5 between trauma-exposed non-Western refugee patients and Dutch patients seeking treatment for PTSD.</h3>
+    <p class="journal-source">European journal of psychotraumatology &middot; Measurement invariance of the Clinician Administered PTSD Scale for DSM-5 between trauma-exposed non-Western refugee patients and Dutch patients seeking treatment for PTSD.</p>
+    <p>CAPS-5在非西方難民與西方患者間量具測量不具備完全標準化，得分差異可能源於文化解讀，臨床評估需考慮文化背景。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">創傷暴露的非西方難民與求治 Dutch 患者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（量具驗證研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">西方與非西方群體比較</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">CAPS-5因素結構與嚴重度比較</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">評估測量</span><span class="tag">文化適應</span><span class="tag">CAPS-5</span><span class="tag">診斷</span><span class="tag">跨文化</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43013472/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">📚</span>其他值得關注的文獻</div><div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🪖</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Influence of the &quot;Blade of Control&quot; Method on Attentional Stability and Posttraumatic Stress Symptoms in Military Personnel: A Pilot Study.</h3>
+    <p class="journal-source">Journal of special operations medicine</p>
+    <p>「刀柄控制」訓練顯著降低現役軍 personnel 的PTSD症狀與提升自律，透過生理威脅刺激訓練專注力穩定，為創傷應對新方法提供證據。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">軍 personnel</span><span class="tag">專注力</span><span class="tag">PTSD症狀</span><span class="tag">訓練</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43098131/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📊</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Psychometric properties of the Chinese version of the neuroception of psychological safety scale (C-NPSS) among emergency nurses.</h3>
+    <p class="journal-source">International emergency nursing</p>
+    <p>C-NPSS 中文版在緊急護理師群體中顯示極高信度與效度，可作為評估心理安全感的工具，支援創傷後預防與照護品質。</p>
+    <div class="card-footer">
+      <span class="tag">評估測量</span><span class="tag">心理安全感</span><span class="tag">緊急護理</span><span class="tag">C-NPSS</span><span class="tag">量具</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43098091/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">😴</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Decoding sleep disturbances in post-traumatic stress disorder: Pathophysiology and treatment implications.</h3>
+    <p class="journal-source">Sleep medicine</p>
+    <p>睡眠障礙是PTSD的核心症狀，本文綜述了睿構架變化、動物模型研究與介入方法，對特定症狀治療具有指導意義。</p>
+    <div class="card-footer">
+      <span class="tag">睡眠</span><span class="tag">病理生理</span><span class="tag">治療啟示</span><span class="tag">PTSD症狀</span><span class="tag">綜述</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43097908/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🚑</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Post-traumatic stress, distress, coping and sleep quality in early-career paramedics.</h3>
+    <p class="journal-source">Occupational medicine</p>
+    <p>急症技士首年 PTSD症狀顯著增加，整體睡眠品質為相關因子，提示早期識別睡眠困難對干預有幫助。</p>
+    <div class="card-footer">
+      <span class="tag">退伍軍人</span><span class="tag">睡眠</span><span class="tag">應對</span><span class="tag">PTSD軌跡</span><span class="tag">急症技士</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43096098/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">⚕️</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Treatment Perceptions, Post-Traumatic Stress Disorder Symptoms, and Non-Fatal Overdose Among Individuals in Methadone Treatment.</h3>
+    <p class="journal-source">Substance use &amp; misuse</p>
+    <p>Methadone 門診患者中25%曾經非致死性藥物過量，PTSD症狀為風險因子，整合創傷知情照護與支援治療參與可能降低過量風險。</p>
+    <div class="card-footer">
+      <span class="tag">物質使用</span><span class="tag">PTSD</span><span class="tag">過量預防</span><span class="tag">methadone</span><span class="tag">創傷知情照護</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43077562/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💕</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Prolonged exposure for PTSD related to intimate partner violence during ongoing threat: a case study.</h3>
+    <p class="journal-source">European journal of psychotraumatology</p>
+    <p>創傷聚焦暴露治療在持續伴侶暴力情境下亦顯示減症效果，提供理論與實證支援在危機中提供 PE 介入的可行性。</p>
+    <div class="card-footer">
+      <span class="tag">伴侶暴力</span><span class="tag">暴露治療</span><span class="tag">PE</span><span class="tag">IPV</span><span class="tag">PTSD治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43071864/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🤰</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>The emotional and psychological impact of pregnancy loss before 24 weeks gestation across elapsed time and income settings: an umbrella review.</h3>
+    <p class="journal-source">EClinicalMedicine</p>
+    <p>孕產損失前24週與PTSD、焦慮、憂鬱關聯密切，跨收入層皆有影響，提示產前產後心理健康監測的重要性。</p>
+    <div class="card-footer">
+      <span class="tag">女性健康</span><span class="tag">妊娠喪失</span><span class="tag">PTSD</span><span class="tag">傘狀複習</span><span class="tag">心理影響</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43065347/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🇮🇱</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Resilience and vulnerability factors for post-traumatic symptoms among Israeli adults: the aftermath of 7 October events.</h3>
+    <p class="journal-source">European journal of psychotraumatology</p>
+    <p>創傷後應力症狀的預測因子包括創傷前社交生活滿意度、社區參與、功能下降、治療暴露、新聞消費與生活滿意度，主觀經驗比客觀暴露更具解釋力。</p>
+    <div class="card-footer">
+      <span class="tag">戰爭創傷</span><span class="tag">韌弱性</span><span class="tag">預測因子</span><span class="tag">以色列 adults</span><span class="tag">9月7日事件</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43013471/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">📊</span>主題分佈</div><div class="topic-row">
+      <span class="topic-name">治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+      <span class="topic-count">22</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">評估量具</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:68%"></div></div>
+      <span class="topic-count">15</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">神經生物學</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:55%"></div></div>
+      <span class="topic-count">12</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">睡眠</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:45%"></div></div>
+      <span class="topic-count">10</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">流行病學</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:41%"></div></div>
+      <span class="topic-count">9</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">跨文化</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:32%"></div></div>
+      <span class="topic-count">7</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">物質使用</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:27%"></div></div>
+      <span class="topic-count">6</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">伴侶暴力</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:23%"></div></div>
+      <span class="topic-count">5</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">數位健康</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:23%"></div></div>
+      <span class="topic-count">5</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">韌弱性</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:18%"></div></div>
+      <span class="topic-count">4</span>
+    </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">🏷️</span>關鍵字</div><div class="keywords"><span class="keyword">PTSD</span><span class="keyword">治療</span><span class="keyword">數位健康</span><span class="keyword">流行病學</span><span class="keyword">睡眠</span><span class="keyword">神經生物學</span><span class="keyword">評估量具</span><span class="keyword">跨文化</span><span class="keyword">物質使用</span><span class="keyword">伴侶暴力</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">🏥</span>
+      <span class="link-name">李政洋身心診所首頁</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">📬</span>
+      <span class="link-name">訂閱電子報</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link" target="_blank">
+      <span class="link-icon">☕</span>
+      <span class="link-name">Buy me a coffee</span>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3.5-lightning-30b-a3b</span>
+    <span><a href="https://github.com/u8901006/PTSD-research">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
