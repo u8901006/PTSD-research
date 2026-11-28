@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PTSD Research Daily &middot; 創傷後壓力研究日報 &middot; 2026年11月28日</title>
+<meta name="description" content="2026年11月28日 PTSD 創傷後壓力研究日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.4s both; }
+  .footer-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link .link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link .link-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link .link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>PTSD Research Daily &middot; 創傷後壓力研究日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月28日</span>
+        <span class="badge badge-count">📊 22 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日研究動態</h2>
+    <p class="summary-text">本日研究聚焦於PTSD跨領域流行病學、創新治療（GLP-1、MDMA輔助、數位介入）與多重併發症（慢性疼痛、酗酒、腦損傷）。特別是GLP-1激動劑在遺傳性肥胖合併PTSD病例中的應用、MDMA輔助 massed exposure therapy 的 VA 系統試點研究，以及針對難民與退伍軍人的標準化評估與照護鏈研究，彰顯了創傷後應激障礙治療向精準醫學與系統性實施的轉型。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">⭐</span>今日精選 TOP Picks</div><div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#1</span>
+      <span class="emoji-icon">💊</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Glucagon-like peptide-1 (GLP-1) agonist treatment and bariatric surgery for the management of early-onset, severe obesity associated with two homozygous melanocortin 4 receptor (MC4R) variants: a case report</h3>
+    <p class="journal-source">Molecular and cellular pediatrics &middot; Glucagon-like peptide-1 (GLP-1) agonist treatment and bariatric surgery for the management of early-onset, severe obesity associated with two homozygous melanocortin 4 receptor (MC4R) variants: a case report</p>
+    <p>GLP-1激動劑與減重手術組合治療下，一例合併MC4R基因變異嚴重肥胖並合併PTSD的青少年患者，於12個月 follow-up 顯示顯著體重下降與併症部分改善，證明遺傳性肥胖正確診斷可啟動目標化治療，組合療法顯示出早期潛力。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">患有MC4R雙合子變異嚴重肥胖並合併PTSD的青少年</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">GLP-1激動劑（利拉古肽）+ sleeve gastrectomy</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">單純手術或一般藥物治療</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">體重下降、併症改善、部分PTSD症狀緩解</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">藥物治療</span><span class="tag">治療</span><span class="tag">神經生物學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43102718/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#2</span>
+      <span class="emoji-icon">🧠</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Adapted Massed Exposure Therapy Enhanced with MDMA for PTSD (aMETEMP): A randomized, double-masked protocol adapted for Veterans Affairs healthcare system</h3>
+    <p class="journal-source">Contemporary clinical trials communications &middot; Adapted Massed Exposure Therapy Enhanced with MDMA for PTSD (aMETEMP): A randomized, double-masked protocol adapted for Veterans Affairs healthcare system</p>
+    <p>VA系統試點研究 MDMA 輔助 massed prolonged exposure therapy，納入 20 位創傷後應激障礙退伍軍人，目標在大型醫療系統中驗證安全性、可行性與遮蔽成功率，作為超越傳統心理治療極限的新輔助策略。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">PTSD退伍軍人</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">MDMA輔助 massed prolonged exposure therapy</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">安慰劑或常規暴露治療</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD嚴重程度變化、安全性、遮蔽成功率</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">MDMA輔助治療</span><span class="tag">暴露治療</span><span class="tag">治療</span><span class="tag">退伍軍人</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42999641/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#3</span>
+      <span class="emoji-icon">📱</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>Digital therapeutics and mHealth interventions for PTSD and depression among military veterans: A systematic review and meta-analysis</h3>
+    <p class="journal-source">Military psychology : the official journal of the Division of Military Psychology, American Psychological Association &middot; Digital therapeutics and mHealth interventions for PTSD and depression among military veterans: A systematic review and meta-analysis</p>
+    <p>大規模 meta 分析證實數位治療與 mHealth 介入顯著降低退伍軍人的 PTSD 與憂鬱症嚴重程度（Hedges'g = -0.47, -0.42），但整體證實度低，完成率約 62.5%，提示作為輔助工具而非獨立治療。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">軍事退伍軍人</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">數位治療 / mHealth 介入</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規護理或對照組</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD/憂鬱症嚴重程度變化、退縮率、完成率</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">數位健康</span><span class="tag">治療</span><span class="tag">退伍軍人</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43071846/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#4</span>
+      <span class="emoji-icon">🔬</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>Network Control Theory in Psychiatry: From Connectivity-Derived Controllability to Brain-State Transitions and Interventions</h3>
+    <p class="journal-source">Neuroscience and biobehavioral reviews &middot; Network Control Theory in Psychiatry: From Connectivity-Derived Controllability to Brain-State Transitions and Interventions</p>
+    <p>系統性回顧 NCT 在 PTSD 等精神疾病中的應用，發現雖具預測治療響應與個性化神經調節目標的潛力，但現有研究多依賴連接性可控性指標，實證脫離的脑態轉移證據仍不足，需未來整合能量度量與前瞻性介入研究。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">PTSD 及其他精神障礙患者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">NCT 導向的腦調節或治療策略</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">傳統神經影像或臨床評估</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">治療響應預測、脑態轉移、神經調節目標</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">神經影像</span><span class="tag">治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43068718/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#5</span>
+      <span class="emoji-icon">🌍</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>War-related post-traumatic stress disorder among conflict-affected civilians: an umbrella review of systematic reviews and meta-analyses</h3>
+    <p class="journal-source">Global health action &middot; War-related post-traumatic stress disorder among conflict-affected civilians: an umbrella review of systematic reviews and meta-analyses</p>
+    <p>戰區創傷後應激障礙傘狀回顧分析，顯示難民與內部流離人口 PTSD prevalence 高達 43.7%，普遍樣本為 23.4%，法理品質多為低分，呼籲標準化診斷與改善創傷照護的可及性。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">戰區衝突影響的平民（特別是難民與IDP）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">標準化創傷照護與篩查</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">以往各獨立估計</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">PTSD prevalence 汇總估計、風險因子、介入效果</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">流行病學</span><span class="tag">治療</span><span class="tag">難民</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43094374/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#6</span>
+      <span class="emoji-icon">💊</span>
+      <span class="utility-high">高實用性</span>
+    </div>
+    <h3>Polypharmacy patterns among Australian Defence Force veterans with posttraumatic stress disorder indicate long-term and complex medication use</h3>
+    <p class="journal-source">Journal of traumatic stress &middot; Polypharmacy patterns among Australian Defence Force veterans with posttraumatic stress disorder indicate long-term and complex medication use</p>
+    <p>ADF 退伍軍人 PTSD 併藥模式研究，顯示 59.8% 滿足多藥定義、平均曝光 32.9 個月，隨年齡增加 polypharmacy 風險，凸顯需持續的藥物審查與監控重要組合（如苯二氮䓬與其他精神藥物）。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">PTSD 退伍軍人</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">藥物審查與監控</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無系統性藥物審查</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">多藥使用率、精神多藥使用、臨床不良事件風險</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">藥物治療</span><span class="tag">退伍軍人</span><span class="tag">複雜性</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43099944/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#7</span>
+      <span class="emoji-icon">📊</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>How is Polysubstance Use Defined? A Systematic Review of Definitions and Associated Mental Health Outcomes</h3>
+    <p class="journal-source">Substance use &amp; misuse &middot; How is Polysubstance Use Defined? A Systematic Review of Definitions and Associated Mental Health Outcomes</p>
+    <p>多物質使用定義系統性回顧，指出定義不一致阻礙研究比較與推論，特別是 PTSD 等精神結果常見，提標準化定義對未來研究與臨床識別的重要性。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">研究多物質使用與心理結果的研究對象</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">系統性文獻檢索與定義分析</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">不同定義間的比較</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">精神結果（PTSD、焦慮、抑鬱等）的一致性與比較</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">物質使用</span><span class="tag">評估測量</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43102830/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div>
+<div class="news-card featured">
+    <div class="card-header">
+      <span class="rank-badge">#8</span>
+      <span class="emoji-icon">🏥</span>
+      <span class="utility-mid">中實用性</span>
+    </div>
+    <h3>Beyond survival in critical illness: patient-centred outcomes, the survival-morbidity paradox and caregiver burden: a comprehensive review</h3>
+    <p class="journal-source">Future science OA &middot; Beyond survival in critical illness: patient-centred outcomes, the survival-morbidity paradox and caregiver burden: a comprehensive review</p>
+    <p>重症醫學存活-病率悖論綒述，PTSD 作為 PICS 核心心理症狀之一，呼籌從單純存活轉向功能復健、品質生命與家屬照護的多維度結果評估。</p>
+    <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">重症 ICU 存活者與其家屬</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">多元化、縱向結果評估與患者/家屬中心照護</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">單純存活導向的照護模式</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">功能狀態、質量生命、獨立生活、社會重新融合</span></div>
+    </div>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">神經生物學</span><span class="tag">照護鏈</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43101962/" target="_blank">閱讀原文 &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">📚</span>其他值得關注的文獻</div><div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💊</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Glucagon-like peptide-1 (GLP-1) agonist treatment and bariatric surgery for the management of early-onset, severe obesity associated with two homozygous melanocortin 4 receptor (MC4R) variants: a case report.</h3>
+    <p class="journal-source">Molecular and cellular pediatrics</p>
+    <p>GLP-1激動劑與減重手術組合治療下，一例合併MC4R基因變異嚴重肥胖並合併PTSD的青少年患者，於12個月 follow-up 顯示顯著體重下降與併症部分改善，證明遺傳性肥胖正確診斷可啟動目標化治療，組合療法顯示出早期潛力。</p>
+    <div class="card-footer">
+      <span class="tag">藥物治療</span><span class="tag">治療</span><span class="tag">神經生物學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43102718/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💊</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Polypharmacy patterns among Australian Defence Force veterans with posttraumatic stress disorder indicate long-term and complex medication use.</h3>
+    <p class="journal-source">Journal of traumatic stress</p>
+    <p>ADF 退伍軍人 PTSD 併藥模式研究，顯示 59.8% 滿足多藥定義、平均曝光 32.9 個月，隨年齡增加 polypharmacy 風險，凸顯需持續的藥物審查與監控重要組合（如苯二氮䓬與其他精神藥物）。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">藥物治療</span><span class="tag">退伍軍人</span><span class="tag">複雜性</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43099944/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📱</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Digital therapeutics and mHealth interventions for PTSD and depression among military veterans: A systematic review and meta-analysis.</h3>
+    <p class="journal-source">Military psychology : the official journal of the Division of Military Psychology, American Psychological Association</p>
+    <p>大規模 meta 分析證實數位治療與 mHealth 介入顯著降低退伍軍人的 PTSD 與憂鬱症嚴重程度（Hedges'g = -0.47, -0.42），但整體證實度低，完成率約 62.5%，提示作為輔助工具而非獨立治療。</p>
+    <div class="card-footer">
+      <span class="tag">數位健康</span><span class="tag">治療</span><span class="tag">退伍軍人</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43071846/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🌍</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>War-related post-traumatic stress disorder among conflict-affected civilians: an umbrella review of systematic reviews and meta-analyses.</h3>
+    <p class="journal-source">Global health action</p>
+    <p>戰區創傷後應激障礙傘狀回顧分析，顯示難民與內部流離人口 PTSD prevalence 高達 43.7%，普遍樣本為 23.4%，法理品質多為低分，呼籲標準化診斷與改善創傷照護的可及性。</p>
+    <div class="card-footer">
+      <span class="tag">流行病學</span><span class="tag">治療</span><span class="tag">難民</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43094374/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📊</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>How is Polysubstance Use Defined? A Systematic Review of Definitions and Associated Mental Health Outcomes.</h3>
+    <p class="journal-source">Substance use &amp; misuse</p>
+    <p>多物質使用定義系統性回顧，指出定義不一致阻礙研究比較與推論，特別是 PTSD 等精神結果常見，提標準化定義對未來研究與臨床識別的重要性。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">物質使用</span><span class="tag">評估測量</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43102830/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🏥</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Beyond survival in critical illness: patient-centred outcomes, the survival-morbidity paradox and caregiver burden: a comprehensive review.</h3>
+    <p class="journal-source">Future science OA</p>
+    <p>重症醫學存活-病率悖論綒述，PTSD 作為 PICS 核心心理症狀之一，呼籌從單純存活轉向功能復健、品質生命與家屬照護的多維度結果評估。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">神經生物學</span><span class="tag">照護鏈</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43101962/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🔪</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Secondary traumatic stress: A threat to surgeons and the patients they serve.</h3>
+    <p class="journal-source">The journal of trauma and acute care surgery</p>
+    <p>STS 作為創傷外科醫生的職業性心理風險，症狀近似 PTSD，呼籲將其視為職業危機並整合監測、防護與心理健康資源。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">退伍軍人</span><span class="tag">職業健康</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43084598/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🤰</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>The emotional and psychological impact of pregnancy loss before 24 weeks gestation across elapsed time and income settings: an umbrella review.</h3>
+    <p class="journal-source">EClinicalMedicine</p>
+    <p>流甫傘狀回顧，PTSD 作為妊娠喪失後常見情緒心理影響之一，隨時間與收入水準差異顯著，呼籲產前產後心理健康整合照護。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">流行病學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43065347/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📏</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Psychometric properties of the Chinese version of the neuroception of psychological safety scale (C-NPSS) among emergency nurses.</h3>
+    <p class="journal-source">International emergency nursing</p>
+    <p>C-NPSS 中文版在急症護理師群體中顯示極高信效度（Cronbach's α = 0.969, 週間重測 ICC = 0.927），可作為評估心理安全感與預測 PTSD 風險的工具。</p>
+    <div class="card-footer">
+      <span class="tag">評估測量</span><span class="tag">治療</span><span class="tag">神經生物學</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43098091/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🤝</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Dynamic associations between received social support, PTSD, and depressive symptoms during post-burn recovery.</h3>
+    <p class="journal-source">European journal of psychotraumatology</p>
+    <p>燒傷康護中社會支持、PTSD 與憂鬱症之動態關聯：3 月支援預測 6 月症狀，12 月憂鬱預測 24 月支持減少，凸顯早期介入與持續性心理健康照護的重要性。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">心理治療</span><span class="tag">社會決定因素</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43061923/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">🔬</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Network Control Theory in Psychiatry: From Connectivity-Derived Controllability to Brain-State Transitions and Interventions.</h3>
+    <p class="journal-source">Neuroscience and biobehavioral reviews</p>
+    <p>系統性回顧 NCT 在 PTSD 等精神疾病中的應用，雖具預測治療響應潛力但實證脫離不足，需未來整合能量度量與前瞻性介入研究。</p>
+    <div class="card-footer">
+      <span class="tag">神經生物學</span><span class="tag">神經影像</span><span class="tag">治療</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43068718/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📱</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>Digital therapeutics and mHealth interventions for PTSD and depression among military veterans: A systematic review and meta-analysis.</h3>
+    <p class="journal-source">Military psychology : the official journal of the Division of Military Psychology, American Psychological Association</p>
+    <p>大規模 meta 分析證實數位治療與 mHealth 介入顯著降低退伍軍人的 PTSD 與憂鬱症嚴重程度（Hedges'g = -0.47, -0.42），但整體證實度低，完成率約 62.5%，提示作為輔助工具而非獨立治療。</p>
+    <div class="card-footer">
+      <span class="tag">數位健康</span><span class="tag">治療</span><span class="tag">退伍軍人</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43071846/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">💊</span>
+      <span class="utility-high utility-sm">高</span>
+    </div>
+    <h3>Polypharmacy patterns among Australian Defence Force veterans with posttraumatic stress disorder indicate long-term and complex medication use.</h3>
+    <p class="journal-source">Journal of traumatic stress</p>
+    <p>ADF 退伍軍人 PTSD 併藥模式研究，顯示 59.8% 滿足多藥定義、平均曝光 32.9 個月，隨年齡增加 polypharmacy 風險，凸顯需持續的藥物審查與監控重要組合（如苯二氮䓬與其他精神藥物）。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">藥物治療</span><span class="tag">退伍軍人</span><span class="tag">複雜性</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43099944/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div>
+<div class="news-card">
+    <div class="card-header-row">
+      <span class="emoji-sm">📊</span>
+      <span class="utility-mid utility-sm">中</span>
+    </div>
+    <h3>How is Polysubstance Use Defined? A Systematic Review of Definitions and Associated Mental Health Outcomes.</h3>
+    <p class="journal-source">Substance use &amp; misuse</p>
+    <p>多物質使用定義系統性回顧，指出定義不一致阻礙研究比較與推論，特別是 PTSD 等精神結果常見，提標準化定義對未來研究與臨床識別的重要性。</p>
+    <div class="card-footer">
+      <span class="tag">治療</span><span class="tag">物質使用</span><span class="tag">評估測量</span>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/43102830/" target="_blank">PubMed &rarr;</a>
+    </div>
+  </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">📊</span>主題分佈</div><div class="topic-row">
+      <span class="topic-name">治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+      <span class="topic-count">26</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">流行病學</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:54%"></div></div>
+      <span class="topic-count">14</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">神經生物學</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:38%"></div></div>
+      <span class="topic-count">10</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">藥物治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:35%"></div></div>
+      <span class="topic-count">9</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">數位健康</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:23%"></div></div>
+      <span class="topic-count">6</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">退伍軍人</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:19%"></div></div>
+      <span class="topic-count">5</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">評估測量</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:19%"></div></div>
+      <span class="topic-count">5</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">複雜性</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:15%"></div></div>
+      <span class="topic-count">4</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">社會決定因素</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:12%"></div></div>
+      <span class="topic-count">3</span>
+    </div>
+<div class="topic-row">
+      <span class="topic-name">MDMA輔助治療</span>
+      <div class="topic-bar-bg"><div class="topic-bar" style="width:8%"></div></div>
+      <span class="topic-count">2</span>
+    </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">🏷️</span>關鍵字</div><div class="keywords"><span class="keyword">PTSD</span><span class="keyword">治療</span><span class="keyword">退伍軍人</span><span class="keyword">數位健康</span><span class="keyword">流行病學</span><span class="keyword">神經生物學</span><span class="keyword">藥物治療</span><span class="keyword">複雜性</span><span class="keyword">標準化</span><span class="keyword">MDMA輔助治療</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">🏥</span>
+      <span class="link-name">李政洋身心診所首頁</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link" target="_blank">
+      <span class="link-icon">📬</span>
+      <span class="link-name">訂閱電子報</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link" target="_blank">
+      <span class="link-icon">☕</span>
+      <span class="link-name">Buy me a coffee</span>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3.5-lightning-30b-a3b</span>
+    <span><a href="https://github.com/u8901006/PTSD-research">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
